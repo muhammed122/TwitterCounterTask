@@ -21,3 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "TwitterCounterTask"
 include(":app")
+include(":core")
+include(":network")
+include(":core:network")

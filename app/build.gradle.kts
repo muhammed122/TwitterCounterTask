@@ -2,8 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    id ("dagger.hilt.android.plugin")
-    id ("kotlin-kapt")
+    alias(libs.plugins.kapt)
+    alias(libs.plugins.hilt.android)
     id ("kotlin-parcelize")
 }
 
@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.twittercountertask"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -77,10 +77,6 @@ dependencies {
     kapt(libs.hilt.compiler)
 
 
-    // Retrofit
-    implementation(libs.retrofit)
-    implementation(libs.logging.interceptor)
-    implementation(libs.converter.gson)
 
 
 

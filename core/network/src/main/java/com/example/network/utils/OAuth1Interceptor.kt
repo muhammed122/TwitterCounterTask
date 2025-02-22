@@ -1,5 +1,6 @@
 package com.example.network.utils
 
+import com.example.network.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
@@ -14,17 +15,8 @@ import javax.crypto.spec.SecretKeySpec
 /**
  * OAuth1Interceptor adds OAuth 1.0 authentication headers to HTTP requests.
  *
- * @param consumerKey Twitter API Consumer Key
- * @param consumerSecret Twitter API Consumer Secret
- * @param token OAuth Token
- * @param tokenSecret OAuth Token Secret
  */
-class OAuth1Interceptor(
-    private val consumerKey: String,
-    private val consumerSecret: String,
-    private val token: String,
-    private val tokenSecret: String
-) : Interceptor {
+class OAuth1Interceptor : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest: Request = chain.request()
@@ -35,8 +27,8 @@ class OAuth1Interceptor(
 
         // Prepare OAuth parameters map
         val oauthParams = mapOf(
-            "oauth_consumer_key" to consumerKey,
-            "oauth_token" to token,
+            "oauth_consumer_key" to BuildConfig.API_KEY,
+            "oauth_token" to BuildConfig.ACCESS_TOKEN,
             "oauth_signature_method" to "HMAC-SHA1",
             "oauth_timestamp" to timestamp,
             "oauth_nonce" to nonce,
@@ -45,7 +37,7 @@ class OAuth1Interceptor(
 
         // Generate signature
         val signatureBaseString = createSignatureBaseString(originalRequest.method, originalRequest.url.toString(), oauthParams)
-        val signingKey = createSigningKey(consumerSecret, tokenSecret)
+        val signingKey = createSigningKey()
         val signature = generateSignature(signatureBaseString, signingKey)
 
         // Generate OAuth Authorization header
@@ -116,7 +108,7 @@ class OAuth1Interceptor(
     /**
      * Creates the signing key for OAuth 1.0 signature.
      */
-    private fun createSigningKey(consumerSecret: String, tokenSecret: String): String {
-        return "${encode(consumerSecret)}&${encode(tokenSecret)}"
+    private fun createSigningKey(): String {
+        return "${encode(BuildConfig.API_KEY_SECRET)}&${encode(BuildConfig.ACCESS_TOKEN_SECRET)}"
     }
 }

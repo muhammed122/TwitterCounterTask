@@ -123,6 +123,7 @@
             android:layout_width="match_parent"
             android:gravity="top"
             android:padding="@dimen/_8sdp"
+            android:textColor="@color/black"
             android:maxLength="280"
             android:textSize="@dimen/_12sdp"
             android:hint="@string/start_typing_you_can_enter_up_to_280_characters"

@@ -15,9 +15,7 @@ object RetrofitModule {
     @Singleton
     @Provides
     fun getRetrofit () : Retrofit{
-        val oauthInterceptor = OAuth1Interceptor(
-            BuildConfig.API_KEY,BuildConfig.API_KEY_SECRET
-            , BuildConfig.ACCESS_TOKEN , BuildConfig.ACCESS_TOKEN_SECRET)
+        val oauthInterceptor = OAuth1Interceptor()
 
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY

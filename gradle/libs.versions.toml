@@ -24,7 +24,7 @@ sdpAndroid = "1.1.0"
 
 activity = "1.9.1"
 constraintlayout = "2.1.4"
-navigationUiKtx = "2.7.7"
+navigationUiKtx = "2.8.7"
 navVersion = "2.6.0"
 
 

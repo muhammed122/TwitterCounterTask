@@ -25,21 +25,19 @@ object TwitterAppModule {
     }
 }
 
-
 @Module
 @InstallIn(ViewModelComponent::class)
 abstract class BindRepo {
-    @Binds
-    @ViewModelScoped
-    fun getRemoteDataSource(twitterService: TwitterService): TwitterDataSource {
-        return TwitterDataSourceImpl(twitterService)
-    }
 
     @Binds
     @ViewModelScoped
-    fun getRepository(
-        dataSource: TwitterDataSource,
-    ): TwitterRepository {
-        return TwitterRepositoryImpl(dataSource)
-    }
+    abstract fun getRemoteDataSource(twitterDataSourceImpl: TwitterDataSourceImpl):
+            TwitterDataSource
+
+    @Binds
+    @ViewModelScoped
+    abstract fun getRepository(
+        repositoryImpl: TwitterRepositoryImpl,
+    ): TwitterRepository
+
 }

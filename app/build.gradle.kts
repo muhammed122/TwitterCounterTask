@@ -37,8 +37,9 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures {
-        compose = true
+    buildFeatures{
+        viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -59,6 +60,13 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    implementation(libs.material)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.constraintlayout)
+
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 
     // Mockito
     testImplementation(libs.mockito.core)
@@ -85,5 +93,12 @@ dependencies {
     implementation(project(":core:ui"))
 
 
+    // Dimens
+    implementation(libs.sdp.android)
+
+
+    // Navigation Components
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 
 }

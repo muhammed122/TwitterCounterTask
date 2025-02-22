@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:paddingHorizontal="@dimen/_10sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+        android:id="@+id/textHeader"
+        android:layout_width="match_parent"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:text="@string/twitter_character_count"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_13sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:background="#F6F6F6"
+        app:layout_constraintTop_toBottomOf="@+id/textHeader"/>
+
+    <ImageView
+        android:id="@+id/imageLogo"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:src="@drawable/twitter_logo"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/background_counter"
+        app:layout_constraintWidth_percent="0.48"
+        android:layout_marginTop="@dimen/_15sdp"
+        app:layout_constraintTop_toBottomOf="@+id/imageLogo"
+        app:layout_constraintStart_toStartOf="parent"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/characters_typed"
+            android:textColor="@color/black"
+            android:gravity="center_horizontal"
+            android:paddingVertical="@dimen/_8sdp"
+            android:background="@drawable/background_counter_text"
+            />
+
+        <TextView
+            android:id="@+id/charactersTyped"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="0/280"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/_12sdp"
+            android:gravity="center_horizontal"
+            android:paddingVertical="@dimen/_20sdp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearRemaining"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintWidth_percent="0.48"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@drawable/background_counter"
+        app:layout_constraintTop_toBottomOf="@+id/imageLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/characters_remaining"
+            android:textColor="@color/black"
+            android:gravity="center_horizontal"
+            android:paddingVertical="@dimen/_8sdp"
+            android:background="@drawable/background_counter_text"
+            />
+
+        <TextView
+            android:id="@+id/characterRemaining"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="280"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/_12sdp"
+            android:gravity="center_horizontal"
+            android:paddingVertical="@dimen/_20sdp"
+            />
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardEdit"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.25"
+        app:cardCornerRadius="@dimen/_10sdp"
+        android:layout_marginHorizontal="1dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@+id/linearRemaining"
+        >
+        <EditText
+            android:id="@+id/editTweet"
+            android:background="@drawable/background_edit"
+            android:layout_width="match_parent"
+            android:gravity="top"
+            android:padding="@dimen/_8sdp"
+            android:maxLength="280"
+            android:textSize="@dimen/_12sdp"
+            android:hint="@string/start_typing_you_can_enter_up_to_280_characters"
+            android:layout_height="match_parent"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCopy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cornerRadius="@dimen/_10sdp"
+        android:text="@string/copy_text"
+        android:backgroundTint="@color/green"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardEdit"
+        />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnClear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cornerRadius="@dimen/_10sdp"
+        android:text="@string/clear_text"
+        android:backgroundTint="@color/red"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardEdit"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSendTweet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cornerRadius="@dimen/_10sdp"
+        android:text="@string/post_tweet"
+        android:backgroundTint="@color/blue"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnClear"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

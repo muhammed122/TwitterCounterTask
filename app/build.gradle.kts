@@ -77,6 +77,12 @@ dependencies {
     kapt(libs.hilt.compiler)
 
 
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    implementation(project(":core:network"))
+    implementation(project(":core:ui"))
 
 
 
